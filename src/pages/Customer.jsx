@@ -1,9 +1,9 @@
 import "../styles/Customer.css";
-import { useState } from "react";
+// import { useState } from "react";
 
 import SearchBar from "../layouts/Customer/SearchBar";
 import Table from "../layouts/Customer/Table";
-import { ButtonSecondary } from "../components/Button";
+// import { ButtonSecondary } from "../components/Button";
 
 const Customer = () => {
   // const buttonFeatures2 = {
