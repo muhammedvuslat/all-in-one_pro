@@ -1,0 +1,222 @@
+[
+  {
+    "id": "1000001",
+    "firmaAdi": "Atlas İnşaaaaaat A.Ş.",
+    "adres": "Kızılay Mah. Atatürk Cad. No:42, Ankara",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 312 555 1234",
+    "mail": "iletisim@atlasinsaat.com",
+    "referansKisi": "Mehmet Ali Cenk",
+    "notlar": "Daha önce İstanbul şantiyesi için 500 kalıp alınmıştı.",
+    "cari": "C1000001"
+  },
+  {
+    "id": "1000002",
+    "firmaAdi": "Yıldız Teknoloji Ltd. Şti.",
+    "adres": "Maslak Mah. Büyükdere Cad. No:255, İstanbul",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 212 444 5678",
+    "mail": "info@yildizteknoloji.com",
+    "referansKisi": "Ayşe Demir",
+    "notlar": "Yazılım danışmanlığı için görüşme yapıldı.",
+    "cari": "C1000002"
+  },
+  {
+    "id": "1000003",
+    "firmaAdi": "Güneş Enerji Sistemleri",
+    "adres": "Alsancak Mah. 1456 Sok. No:12, İzmir",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 232 333 9876",
+    "mail": "gunes@gunesenerji.com",
+    "referansKisi": "Ahmet Çelik",
+    "notlar": "Solar panel projesi için teklif bekleniyor.",
+    "cari": "C1000003"
+  },
+  {
+    "id": "1000004",
+    "firmaAdi": "Mavi Lojistik A.Ş.",
+    "adres": "Yeşilyurt Mah. Hürriyet Cad. No:88, Antalya",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 242 777 4321",
+    "mail": "iletisim@mavilojistik.com",
+    "referansKisi": "Zeynep Kaya",
+    "notlar": "Uluslararası nakliye için anlaşma yapıldı.",
+    "cari": "C1000004"
+  },
+  {
+    "id": "1000005",
+    "firmaAdi": "Kuzey Mühendislik",
+    "adres": "Bahçelievler Mah. 7. Cad. No:33, Samsun",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 362 888 6543",
+    "mail": "info@kuzeymuhendislik.com",
+    "referansKisi": "Hakan Öztürk",
+    "notlar": "Köprü projesi için malzeme temini yapıldı.",
+    "cari": "C1000005"
+  },
+  {
+    "id": "1000006",
+    "firmaAdi": "Deniz Gıda Sanayi",
+    "adres": "Merkez Mah. Cumhuriyet Cad. No:17, Trabzon",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 462 222 3456",
+    "mail": "satis@denizgida.com",
+    "referansKisi": "Fatma Şahin",
+    "notlar": "Yeni ürün lansmanı için görüşme planlanıyor.",
+    "cari": "C1000006"
+  },
+  {
+    "id": "1000007",
+    "firmaAdi": "Ege Tekstil Ltd. Şti.",
+    "adres": "Çankaya Mah. 1472 Sok. No:9, Denizli",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 258 666 7890",
+    "mail": "ege@egetekstil.com",
+    "referansKisi": "Murat Aydın",
+    "notlar": "İhracat için kumaş numuneleri gönderildi.",
+    "cari": "C1000007"
+  },
+  {
+    "id": "1000008",
+    "firmaAdi": "Akdeniz Kimya A.Ş.",
+    "adres": "Kemeraltı Mah. 842 Sok. No:22, Mersin",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 324 555 3210",
+    "mail": "info@akdenizkimya.com",
+    "referansKisi": "Seda Yılmaz",
+    "notlar": "Endüstriyel kimyasal siparişi için görüşme yapıldı.",
+    "cari": "C1000008"
+  },
+  {
+    "id": "1000009",
+    "firmaAdi": "Çınar Mobilya Sanayi",
+    "adres": "Siteler Mah. 1234 Sok. No:15, Bursa",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 224 777 6543",
+    "mail": "satis@cinar mobilya.com",
+    "referansKisi": "Emre Can",
+    "notlar": "Ofis mobilyaları için teklif hazırlandı.",
+    "cari": "C1000009"
+  },
+  {
+    "id": "1000010",
+    "firmaAdi": "Doğu Metal İşleme",
+    "adres": "Organize Sanayi Bölgesi 3. Cad. No:7, Kayseri",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 352 444 9876",
+    "mail": "iletisim@dogumetal.com",
+    "referansKisi": "Selin Arslan",
+    "notlar": "Makine parçaları için üretim planlanıyor.",
+    "cari": "C1000010"
+  },
+  {
+    "id": "1000011",
+    "firmaAdi": "Batı Otomotiv A.Ş.",
+    "adres": "Sanayi Mah. 456 Sok. No:19, Adana",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 322 333 1234",
+    "mail": "info@batiotomotiv.com",
+    "referansKisi": "Burak Kılıç",
+    "notlar": "Yedek parça siparişi için görüşme yapılacak.",
+    "cari": "C1000011"
+  },
+  {
+    "id": "1000012",
+    "firmaAdi": "Yeşil Tarım Ltd. Şti.",
+    "adres": "Merkez Mah. Gazi Cad. No:50, Konya",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 332 555 8765",
+    "mail": "yesil@yesiltarim.com",
+    "referansKisi": "Esra Aksoy",
+    "notlar": "Organik ürün sertifikası için destek alındı.",
+    "cari": "C1000012"
+  },
+  {
+    "id": "1000013",
+    "firmaAdi": "Karadeniz Balıkçılık",
+    "adres": "Liman Mah. Deniz Cad. No:33, Ordu",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 452 222 5432",
+    "mail": "satis@karadenizbalik.com",
+    "referansKisi": "Cem Özdemir",
+    "notlar": "Soğuk hava deposu için teklif bekleniyor.",
+    "cari": "C1000013"
+  },
+  {
+    "id": "1000014",
+    "firmaAdi": "Marmara Danışmanlık",
+    "adres": "Etiler Mah. Nispetiye Cad. No:12, İstanbul",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 212 666 3210",
+    "mail": "info@marmaradanismanlik.com",
+    "referansKisi": "Ece Korkmaz",
+    "notlar": "Stratejik planlama için sözleşme imzalandı.",
+    "cari": "C1000014"
+  },
+  {
+    "id": "1000015",
+    "firmaAdi": "Anadolu Makine A.Ş.",
+    "adres": "Ostim Mah. 123 Cad. No:44, Ankara",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 312 777 9876",
+    "mail": "satis@anadolumakine.com",
+    "referansKisi": "Okan Şen",
+    "notlar": "CNC makine bakımı için anlaşma yapıldı.",
+    "cari": "C1000015"
+  },
+  {
+    "id": "1000016",
+    "firmaAdi": "Pamuk Gıda Ltd. Şti.",
+    "adres": "Fevzi Çakmak Mah. 105 Sok. No:8, Gaziantep",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 342 444 6543",
+    "mail": "info@pamukgida.com",
+    "referansKisi": "Derya Polat",
+    "notlar": "Baklava üretimi için hammadde siparişi alındı.",
+    "cari": "C1000016"
+  },
+  {
+    "id": "1000017",
+    "firmaAdi": "Zirve İnşaat Malzemeleri",
+    "adres": "Küçükbakkalköy Mah. 789 Sok. No:21, İstanbul",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 216 555 4321",
+    "mail": "satis@zirveinsaat.com",
+    "referansKisi": "Tolga Erdem",
+    "notlar": "Çimento sevkiyatı için lojistik planlandı.",
+    "cari": "C1000017"
+  },
+  {
+    "id": "1000018",
+    "firmaAdi": "Umut Elektronik A.Ş.",
+    "adres": "Yenişehir Mah. 456 Cad. No:66, İzmir",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 232 777 1234",
+    "mail": "info@umutelektronik.com",
+    "referansKisi": "Buse Güneş",
+    "notlar": "Elektronik devre kartı üretimi için görüşme yapıldı.",
+    "cari": "C1000018"
+  },
+  {
+    "id": "1000019",
+    "firmaAdi": "Safa Turizm Ltd. Şti.",
+    "adres": "Kapalıçarşı Mah. 321 Sok. No:14, Antalya",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 242 333 8765",
+    "mail": "rezervasyon@safaturizm.com",
+    "referansKisi": "Onur Çetin",
+    "notlar": "Tur organizasyonu için sözleşme hazırlandı.",
+    "cari": "C1000019"
+  },
+  {
+    "id": "1000020",
+    "firmaAdi": "Hilal Medikal A.Ş.",
+    "adres": "Çankaya Mah. Üsküdar Cad. No:77, İstanbul",
+    "iceKodu": "000001683000011",
+    "telefon": "+90 216 444 5432",
+    "mail": "info@hilalmedikal.com",
+    "referansKisi": "Sibel Ak",
+    "notlar": "Tıbbi cihaz temini için teklif gönderildi.",
+    "cari": "C1000020"
+  }
+]
