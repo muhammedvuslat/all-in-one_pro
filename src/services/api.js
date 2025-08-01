@@ -1,10 +1,17 @@
 import axios from "axios";
 
-const api = axios.create({
+export const customersApi = axios.create({
   baseURL: "https://67decc97471aaaa74285a8fb.mockapi.io",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-export default api;
+export const customersChartApi = axios.create({
+  baseURL: "https://67decc97471aaaa74285a8fb.mockapi.io/calisma",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+//! Tam çeviri Client Account

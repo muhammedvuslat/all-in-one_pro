@@ -1,24 +1,26 @@
-import api from "./api";
+import { customersApi, customersChartApi } from "./api";
 
 export const getCustomers = async () => {
-  const response = await api.get("/calisma");
+  const response = await customersApi.get("/calisma");
   return response.data;
 };
 
 export const createCustomer = async (customerData) => {
-  const response = await api.post("/calisma", customerData);
+  const response = await customersApi.post("/calisma", customerData);
   return response.data;
 };
 
 export const updateCustomer = async (id, customerData) => {
-  const response = await api.put(`/calisma/${id}`, customerData);
+  const response = await customersApi.put(`/calisma/${id}`, customerData);
   return response.data;
 };
 
 export const deleteCustomer = async (id) => {
-  console.log(id);
-  const response = await api.delete(`/calisma/${id}`);
-  console.log(response);
-  console.log(response.data);
+  const response = await customersApi.delete(`/calisma/${id}`);
   return response.data;
+};
+
+export const getClientAccount = async (id) => {
+  const response = await customersChartApi.get(`/${id}/test`);
+  return response;
 };
