@@ -10,7 +10,7 @@ export default function SimpleAreaChart({ customerChartData }) {
 
   console.log(customerChartData);
   return (
-    <div className="flex flex-row bg-[rgba(174,171,171,0.31)] rounded-[16px] shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[6.2px] border border-light-quintuple dark:border-dark-quaternary ">
+    <div className="flex flex-row  ">
       <div className=" grid content-center">
         <p className="text-3xl ps-1">{total}</p>
       </div>

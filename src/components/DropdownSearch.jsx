@@ -40,10 +40,10 @@ const DropdownSearch = ({ customerId, setChartOpen }) => {
   };
 
   return (
-    <div className="flex flex-row items-start gap-2 w-64 relative">
+    <div className="flex flex-row  gap-2 w-auto relative items-center my-6 ">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full text-left px-4 py-2 border border-gray-300 rounded-md bg-white shadow-sm focus:outline-none"
+        className="w-40 md:w-96 h-10 text-left px-4 py-2 border  rounded-md bg-white shadow-sm focus:outline-none truncate"
       >
         {selectedItem ? selectedItem.companyName : "Select an item"}
       </button>
@@ -79,9 +79,9 @@ const DropdownSearch = ({ customerId, setChartOpen }) => {
       <button
         onClick={handleGetData}
         disabled={!selectedItem}
-        className={`mt-2 px-4 py-2 rounded-md w-full  text-white transition-colors ${
+        className={`px-4 py-2 rounded-md  h-10 w-auto text-white transition-colors ${
           selectedItem
-            ? "bg-blue-600 hover:bg-blue-700"
+            ? "dark:bg-dark-quaternary dark:hover:bg-dark-eighth bg-light-quintuple hover:bg-light-ninth"
             : "bg-gray-400 cursor-not-allowed"
         }`}
       >

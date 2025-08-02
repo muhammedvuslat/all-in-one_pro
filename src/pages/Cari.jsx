@@ -26,32 +26,28 @@ const Cari = () => {
 
   return (
     <>
-      <div className="mt-20  border border-red-600 ">
-        <div className="border place-items-center border-green-500">
+      <div className="mt-20">
+        <div className=" place-items-center ">
           <DropdownSearch
             customerId={setCustomerId}
             setChartOpen={setChartOpen}
           />
         </div>
-        {chartOpen && (
+        {chartOpen && customerChartData && (
           <>
-            <div className=" w-auto h-full flex flex-col justify-center md:flex-row gap-52 ">
-              <div className=" bg-[rgba(174,171,171,0.31)] rounded-[16px] shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[6.2px] border border-light-quintuple dark:border-dark-quaternary ">
-                {customerChartData && (
-                  <PieChartWithPaddingAngle
-                    customerChartData={customerChartData}
-                  />
-                )}
+            <div className=" w-auto h-full flex flex-col justify-center md:flex-row  md:gap-52 gap-8 ">
+              <div>
+                <PieChartWithPaddingAngle
+                  customerChartData={customerChartData}
+                />
               </div>
               <div className="  text-white ">
-                {customerChartData && (
-                  <SimpleAreaChart customerChartData={customerChartData} />
-                )}
+                <SimpleAreaChart customerChartData={customerChartData} />
               </div>
             </div>
             <div className=" ">
-              <InputCurrent />
-            </div>{" "}
+              <InputCurrent customerChartData={customerChartData} />
+            </div>
           </>
         )}
       </div>

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
+import { ButtonInputCurrent, ButtonSubmit } from "../../components/Button";
 
-const InputCurrent = () => {
+const InputCurrent = ({ customerChartData }) => {
+  console.log(customerChartData);
   const product = false;
   const [formData, setFormData] = useState({
     id: "",
@@ -35,18 +36,18 @@ const InputCurrent = () => {
       className=" top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full  "
     >
       <div className="relative p-4 w-full max-w max-h-full ">
-        <div className="relative   rounded-[16px]  border border-light-quintuple dark:border-dark-quaternary  ">
-          <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-dark-quaternary border-light-quintuple  ">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Edit Product
-            </h3>
+        <div className="relative  rounded-[16px]  border border-light-quintuple dark:border-dark-quaternary  ">
+          <div className="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-dark-quaternary border-light-quintuple  ">
+            <p className="text-lg font-semibold text-gray-900 dark:text-white">
+              Edit Current Account
+            </p>
           </div>
           <form className="p-4 md:p-5" onSubmit={handleSubmit}>
-            <div className="grid gap-2 mb-4 grid-cols-1 ">
-              <div className="mt-4 md:flex md:flex-row place-content-center gap-20">
+            <div className="grid gap-2 mb-10 grid-cols-1 ">
+              <div className="mt-4 md:flex md:flex-row place-content-center gap-10">
                 <label
                   htmlFor="companyName"
-                  className="block mb-2  text-sm font-medium text-light-sixth dark:text-dark-sixth  content-center items-start   w-32"
+                  className="block mb-2 text-sm font-medium text-light-sixth dark:text-dark-sixth  content-center items-start   w-32"
                 >
                   Receivables
                 </label>
@@ -59,11 +60,13 @@ const InputCurrent = () => {
                   className={inputStyle}
                   placeholder="$ Enter amount"
                 />
+                <ButtonInputCurrent content={"-"} />
+                <ButtonInputCurrent content={"+"} />
               </div>
-              <div className="mt-4 md:flex md:flex-row place-content-center gap-20">
+              <div className="mt-4 md:flex md:flex-row place-content-center gap-10">
                 <label
                   htmlFor="companyName"
-                  className="block mb-2  text-sm font-medium text-light-sixth dark:text-dark-sixth  content-center  items-start   w-32 "
+                  className="block mb-2 text-sm font-medium text-light-sixth dark:text-dark-sixth  content-center  items-start   w-32 "
                 >
                   Payables
                 </label>
@@ -76,11 +79,13 @@ const InputCurrent = () => {
                   className={inputStyle}
                   placeholder="$ Enter amount"
                 />
+                <ButtonInputCurrent content={"-"} />
+                <ButtonInputCurrent content={"+"} />
               </div>
-              <div className="mt-4 md:flex md:flex-row place-content-center gap-20">
+              <div className="mt-4 md:flex md:flex-row place-content-center gap-10">
                 <label
                   htmlFor="companyName"
-                  className="block mb-2  text-sm font-medium text-light-sixth dark:text-dark-sixth  content-center items-start   w-32"
+                  className="block mb-2 text-sm font-medium text-light-sixth dark:text-dark-sixth  content-center items-start   w-32"
                 >
                   Notes Receivable Amount
                 </label>
@@ -93,11 +98,13 @@ const InputCurrent = () => {
                   className={inputStyle}
                   placeholder="$ Enter amount"
                 />
+                <ButtonInputCurrent content={"-"} />
+                <ButtonInputCurrent content={"+"} />
               </div>
-              <div className="mt-4 md:flex md:flex-row place-content-center gap-20">
+              <div className="mt-4 md:flex md:flex-row place-content-center gap-10">
                 <label
                   htmlFor="companyName"
-                  className="block mb-2  text-sm font-medium text-light-sixth dark:text-dark-sixth  content-center items-start   w-32"
+                  className="block mb-2 text-sm font-medium text-light-sixth dark:text-dark-sixth  content-center items-start   w-32"
                 >
                   Notes Payable Amount
                 </label>
@@ -110,10 +117,11 @@ const InputCurrent = () => {
                   className={inputStyle}
                   placeholder="$ Enter amount"
                 />
+                <ButtonInputCurrent content={"-"} />
+                <ButtonInputCurrent content={"+"} />
               </div>
             </div>
-
-            <button className="btn bg-dark-quintuple me-6 w-10">Sil</button>
+            <ButtonSubmit content={"Save"} />
           </form>
         </div>
       </div>

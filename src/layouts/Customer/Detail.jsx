@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { ButtonPrimary } from "../../components/Button";
+import { ButtonSubmit } from "../../components/Button";
 import { faker } from "@faker-js/faker";
 
 const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
   const inputStyle =
     " text-sm border-x border-b rounded-b-xl  block w-full p-2.5 dark:bg-dark-secondary bg-light-secondary dark:border-dark-tertiary border-light-tertiary dark:placeholder-dark-seventh placeholder:text-dark-seventh dark:text-dark-sixth text-light-sixth";
-  const buttonFeatures = {
-    text: "Save",
-    rounded: "3xl",
-    styled: "",
-  };
+
   const [formData, setFormData] = useState({
     id: "",
     companyName: "",
@@ -275,7 +271,7 @@ const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
             >
               test
             </button>
-            <ButtonPrimary props={buttonFeatures} />
+            <ButtonSubmit content={"Save"} />
           </form>
         </div>
       </div>
