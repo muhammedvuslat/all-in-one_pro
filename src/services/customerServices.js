@@ -24,3 +24,13 @@ export const getClientAccount = async (id) => {
   const response = await customersChartApi.get(`/${id}/test`);
   return response;
 };
+
+export const updateClientAccount = async (id, customerChartData) => {
+  console.log(id);
+  console.log(customerChartData);
+  const response = await customersChartApi.put(
+    `/${id}/test/${id}`,
+    customerChartData
+  );
+  return response.data;
+};

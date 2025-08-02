@@ -1,31 +1,18 @@
-import { useState } from "react";
-import { ButtonInputCurrent, ButtonSubmit } from "../../components/Button";
+import { ButtonSubmit } from "../../components/Button";
 
-const InputCurrent = ({ customerChartData }) => {
-  console.log(customerChartData);
-  const product = false;
-  const [formData, setFormData] = useState({
-    id: "",
-    companyName: "",
-    address: "",
-    iceCode: "",
-    phone: "",
-    eMail: "",
-    referencePerson: "",
-    currentAccount: "",
-    notes: "",
-  });
+const InputCurrent = ({
+  customerChartData,
+  handleSubmit,
+  setCustomerChartData,
+}) => {
   const inputStyle =
     " text-sm border-x border-b rounded-b-xl  p-2.5 dark:bg-dark-secondary bg-light-secondary border-light-quintuple dark:border-dark-quaternary dark:placeholder-dark-seventh placeholder:text-dark-seventh dark:text-dark-sixth text-light-sixth ";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    console.log("test");
-  };
-
   const handleChange = (e) => {
-    console.log("test");
+    setCustomerChartData({
+      ...customerChartData,
+      [e.target.name]: Number(e.target.value),
+    });
   };
 
   return (
@@ -42,83 +29,81 @@ const InputCurrent = ({ customerChartData }) => {
               Edit Current Account
             </p>
           </div>
-          <form className="p-4 md:p-5" onSubmit={handleSubmit}>
+          <form
+            className="p-4 md:p-5"
+            onSubmit={(e) => {
+              handleSubmit();
+              e.preventDefault();
+            }}
+          >
             <div className="grid gap-2 mb-10 grid-cols-1 ">
               <div className="mt-4 md:flex md:flex-row place-content-center gap-10">
                 <label
-                  htmlFor="companyName"
+                  htmlFor="receivables"
                   className="block mb-2 text-sm font-medium text-light-sixth dark:text-dark-sixth  content-center items-start   w-32"
                 >
                   Receivables
                 </label>
                 <input
                   type="number"
-                  name="companyName"
-                  id="companyName"
-                  value={formData.companyName}
+                  name="receivables"
+                  id="receivables"
+                  value={customerChartData?.receivables || ""}
                   onChange={handleChange}
                   className={inputStyle}
                   placeholder="$ Enter amount"
                 />
-                <ButtonInputCurrent content={"-"} />
-                <ButtonInputCurrent content={"+"} />
               </div>
               <div className="mt-4 md:flex md:flex-row place-content-center gap-10">
                 <label
-                  htmlFor="companyName"
+                  htmlFor="payables"
                   className="block mb-2 text-sm font-medium text-light-sixth dark:text-dark-sixth  content-center  items-start   w-32 "
                 >
                   Payables
                 </label>
                 <input
                   type="number"
-                  name="companyName"
-                  id="companyName"
-                  value={formData.companyName}
+                  name="payables"
+                  id="payables"
+                  value={customerChartData?.payables || ""}
                   onChange={handleChange}
                   className={inputStyle}
                   placeholder="$ Enter amount"
                 />
-                <ButtonInputCurrent content={"-"} />
-                <ButtonInputCurrent content={"+"} />
               </div>
               <div className="mt-4 md:flex md:flex-row place-content-center gap-10">
                 <label
-                  htmlFor="companyName"
+                  htmlFor="notesRA"
                   className="block mb-2 text-sm font-medium text-light-sixth dark:text-dark-sixth  content-center items-start   w-32"
                 >
                   Notes Receivable Amount
                 </label>
                 <input
                   type="number"
-                  name="companyName"
-                  id="companyName"
-                  value={formData.companyName}
+                  name="notesRA"
+                  id="notesRA"
+                  value={customerChartData?.notesRA || ""}
                   onChange={handleChange}
                   className={inputStyle}
                   placeholder="$ Enter amount"
                 />
-                <ButtonInputCurrent content={"-"} />
-                <ButtonInputCurrent content={"+"} />
               </div>
               <div className="mt-4 md:flex md:flex-row place-content-center gap-10">
                 <label
-                  htmlFor="companyName"
+                  htmlFor="notesPA"
                   className="block mb-2 text-sm font-medium text-light-sixth dark:text-dark-sixth  content-center items-start   w-32"
                 >
                   Notes Payable Amount
                 </label>
                 <input
                   type="number"
-                  name="companyName"
-                  id="companyName"
-                  value={formData.companyName}
+                  name="notesPA"
+                  id="notesPA"
+                  value={customerChartData?.notesPA || ""}
                   onChange={handleChange}
                   className={inputStyle}
                   placeholder="$ Enter amount"
                 />
-                <ButtonInputCurrent content={"-"} />
-                <ButtonInputCurrent content={"+"} />
               </div>
             </div>
             <ButtonSubmit content={"Save"} />
