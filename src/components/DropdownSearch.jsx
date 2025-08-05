@@ -28,12 +28,8 @@ const DropdownSearch = ({ customerId, setChartOpen }) => {
     setIsOpen(false);
   };
 
-  //   console.log(items);
-
   const handleGetData = () => {
     if (selectedItem) {
-      console.log("Veriler getiriliyor:", selectedItem.id);
-      // Veriyi dışa aktarma (örneğin grafik componentine)
       customerId(selectedItem.id);
       setChartOpen(true);
     }

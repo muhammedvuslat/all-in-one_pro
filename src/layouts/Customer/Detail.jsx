@@ -41,16 +41,11 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
 
       // Fonksiyonel güncelleme ile state'i ve formSubmit'i aynı anda işle
       setFormData((prevFormData) => {
-        console.log(prevFormData);
-
         const updatedFormData = { ...prevFormData, currentAccount: fakerData };
-        console.log("Updated formData:", updatedFormData);
-        console.log("Faker data:", fakerData);
         formSubmit(updatedFormData); // Güncel veriyi doğrudan gönder
         return updatedFormData; // State'i güncelle
       });
     } else {
-      console.log("Sent to formSubmit:", formData);
       formSubmit(formData); // currentAccount varsa mevcut formData'yı gönder
     }
   };

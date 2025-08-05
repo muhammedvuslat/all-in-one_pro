@@ -28,12 +28,9 @@ const Cari = () => {
   }, [customerId]);
 
   const handleSubmit = async () => {
-    console.log(customerChartData);
-    console.log(customerId);
     try {
       await updateClientAccount(customerId, customerChartData); // önce güncelle
       await fetchClientAccount(customerId); // sonra veriyi yeniden çek
-      console.log("Güncelleme ve veri çekme işlemi tamamlandı");
     } catch (error) {
       console.error("Hata:", error);
     }

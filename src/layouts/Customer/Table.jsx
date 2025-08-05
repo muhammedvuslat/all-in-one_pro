@@ -53,15 +53,12 @@ const Table = () => {
   //! DELETE Customer
 
   const handleDeleteCustomer = async (id) => {
-    console.log(typeof id);
     try {
       await deleteCustomer(id);
       setCustomers(customers.filter((c) => c.id !== id));
-      console.log("Try block");
       handleCloseModal();
       setError(null);
     } catch (error) {
-      console.log("catch block", error);
       setError("Failed to delete customer");
     }
   };

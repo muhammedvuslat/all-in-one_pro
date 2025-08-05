@@ -8,7 +8,6 @@ export default function SimpleAreaChart({ customerChartData }) {
   const uData = [productA, productB, productC, productD];
   const total = uData.reduce((acc, curr) => acc + curr, 0);
 
-  console.log(customerChartData);
   return (
     <div className="flex flex-row text-black dark:text-white ">
       <div className=" grid content-center">

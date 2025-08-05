@@ -26,8 +26,6 @@ export const getClientAccount = async (id) => {
 };
 
 export const updateClientAccount = async (id, customerChartData) => {
-  console.log(id);
-  console.log(customerChartData);
   const response = await customersChartApi.put(
     `/${id}/test/${id}`,
     customerChartData
