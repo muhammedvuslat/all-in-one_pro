@@ -7,18 +7,13 @@ import {
   getCustomers,
   updateCustomer,
 } from "../../services/customerServices";
-// import { ButtonSecondary } from "../../components/Button";
+import { ButtonNewCustomer } from "../../components/Button";
 
 const Table = () => {
   const [customers, setCustomers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [error, setError] = useState(null);
-  // const buttonFeatures2 = {
-  //   text: "Add Customer",
-  //   rounded: "b-3xl",
-  //   styled: "",
-  // };
 
   //! READ Customer
   useEffect(() => {
@@ -63,6 +58,7 @@ const Table = () => {
       await deleteCustomer(id);
       setCustomers(customers.filter((c) => c.id !== id));
       console.log("Try block");
+      handleCloseModal();
       setError(null);
     } catch (error) {
       console.log("catch block", error);
@@ -102,68 +98,71 @@ const Table = () => {
   };
 
   return (
-    <div className="relative overflow-x-auto  m-2">
-      {error && <div className="text-red-500 mb-4">{error}</div>}
+    <>
+      <div className=" flex place-content-center m-6 ">
+        <ButtonNewCustomer
+          content={"Add Customer"}
+          onClick={() => setIsModalOpen(true)}
+        />
+      </div>
+      <div className="relative overflow-x-auto  m-2">
+        {error && <div className="text-red-500 mb-4">{error}</div>}
 
-      <PencilSquareIcon
-        className=" h-6 w-6 cursor-pointer text-white  "
-        onClick={() => setIsModalOpen(true)}
-      />
-
-      <table className="w-full text-sm text-left rtl:text-right text-light-sixth dark:text-dark-sixth ">
-        <thead className="text-xs  uppercase   border-b border-light-tertiary dark:border-dark-tertiary">
-          <tr className=" rounded-3xl text-center">
-            {customerColumn.map((item, index) => {
+        <table className="w-full text-sm text-left rtl:text-right text-light-sixth dark:text-dark-sixth ">
+          <thead className="text-xs  uppercase   border-b border-light-tertiary dark:border-dark-tertiary">
+            <tr className=" rounded-3xl text-center">
+              {customerColumn.map((item, index) => {
+                return (
+                  <th scope="col" className="px-10 pb-2" key={index}>
+                    {item}
+                  </th>
+                );
+              })}
+            </tr>
+          </thead>
+          <tbody>
+            {customers.map((item, index) => {
               return (
-                <th scope="col" className="px-10 pb-2" key={index}>
-                  {item}
-                </th>
+                <tr
+                  className="justify-center text-center bg-light-secondary dark:bg-dark-secondary border-t dark:border-dark-tertiary border-light-tertiary 
+                "
+                  key={index}
+                >
+                  <th
+                    scope="row"
+                    className="px-2  font-medium whitespace-nowrap "
+                  >
+                    {item.id}
+                  </th>
+                  <td className="px-2  ">{item.companyName}</td>
+                  <td className="px-2 py-2 ">{item.address}</td>
+                  <td className="px-2  ">{item.iceCode}</td>
+                  <td className="px-2 ">{item.phone}</td>
+                  <td className="px-2 ">{item.eMail}</td>
+                  <td className="px-2 ">{item.referencePerson}</td>
+                  <td className="px-2  ">{item.currentAccount}</td>
+                  <td className="justify-center text-center ">
+                    <button>
+                      <PencilSquareIcon
+                        className=" h-6 w-6 cursor-pointer  "
+                        onClick={() => handleOpenModal(item)}
+                      />
+                    </button>
+                  </td>
+                </tr>
               );
             })}
-          </tr>
-        </thead>
-        <tbody>
-          {customers.map((item, index) => {
-            return (
-              <tr
-                className="justify-center text-center bg-light-secondary dark:bg-dark-secondary border-t dark:border-dark-tertiary border-light-tertiary 
-                "
-                key={index}
-              >
-                <th
-                  scope="row"
-                  className="px-2  font-medium whitespace-nowrap "
-                >
-                  {item.id}
-                </th>
-                <td className="px-2  ">{item.companyName}</td>
-                <td className="px-2 py-2 ">{item.address}</td>
-                <td className="px-2  ">{item.iceCode}</td>
-                <td className="px-2 ">{item.phone}</td>
-                <td className="px-2 ">{item.eMail}</td>
-                <td className="px-2 ">{item.referencePerson}</td>
-                <td className="px-2  ">{item.currentAccount}</td>
-                <td className="justify-center text-center ">
-                  <button>
-                    <PencilSquareIcon
-                      className=" h-6 w-6 cursor-pointer  "
-                      onClick={() => handleOpenModal(item)}
-                    />
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <Detail
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        product={selectedCustomer}
-        formSubmit={handleFormSumbit}
-        delCustomer={handleDeleteCustomer}
-      />
-    </div>
+          </tbody>
+        </table>
+        <Detail
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          customer={selectedCustomer}
+          formSubmit={handleFormSumbit}
+          delCustomer={handleDeleteCustomer}
+        />
+      </div>
+    </>
   );
 };
 

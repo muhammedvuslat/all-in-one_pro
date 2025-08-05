@@ -1,53 +1,31 @@
 import { useTheme } from "../features/ThemeContext";
-import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
+import {
+  SunIcon,
+  MoonIcon,
+  UserPlusIcon,
+  UserMinusIcon,
+  CloudArrowUpIcon,
+} from "@heroicons/react/24/solid";
 
-export const ButtonPrimary = ({ props }) => {
-  const { text, rounded, styled } = props;
+export const ButtonSearchBar = ({ content }) => {
   return (
     <button
       type="submit"
-      className={` end-2.5 bottom-2.5   font-medium rounded-${rounded} text-sm px-4 py-2 dark:bg-dark-quaternary bg-light-quintuple dark:hover:bg-dark-eighth  hover:bg-light-ninth text-light-sixth dark:text-dark-sixth ${styled}`}
+      className={` end-2.5 bottom-2.5   font-medium rounded-3xl text-sm px-4 py-2 dark:bg-dark-quaternary bg-light-quintuple dark:hover:bg-dark-eighth  hover:bg-light-ninth text-light-sixth dark:text-dark-sixth absolute`}
     >
-      {text}
+      {content}
     </button>
   );
-};
-
-export const ButtonSecondary = ({ props }) => {
-  const { text, rounded, styled } = props;
-
-  return (
-    <button
-      type="submit"
-      className={`w-auto mx-2 mt-0 font-medium rounded-${rounded} text-sm px-4 py-2 dark:bg-dark-quaternary bg-light-quintuple dark:hover:bg-dark-eighth  hover:bg-light-ninth text-light-sixth dark:text-dark-sixth ${styled} `}
-    >
-      {text}
-    </button>
-  );
-};
-
-export const ButtonInputCurrent = ({ content }) => {
-  if (content === "+") {
-    return (
-      <button className="btn dark:bg-dark-quaternary dark:text-white bg-light-quintuple text-black  w-10 rounded-[16px]">
-        {content}
-      </button>
-    );
-  } else {
-    return (
-      <button className="btn bg-dark-quaternary dark:bg-dark-quintuple dark:text-white w-10 rounded-[16px]">
-        -
-      </button>
-    );
-  }
 };
 
 export const ButtonSubmit = ({ content }) => {
   return (
     <button
       type="submit"
-      className={`end-2.5 bottom-2.5   font-medium rounded-3xl text-sm px-4 py-2 dark:bg-dark-quaternary bg-light-quintuple dark:hover:bg-dark-eighth  hover:bg-light-ninth text-light-sixth dark:text-dark-sixth `}
+      className={`end-2.5 bottom-2.5 w-fit  font-medium rounded-3xl text-sm px-4 py-2 dark:bg-dark-quaternary gap-4 bg-light-quintuple dark:hover:bg-dark-eighth  hover:bg-light-ninth text-light-sixth dark:text-dark-sixth flex text-center`}
     >
+      <CloudArrowUpIcon className="h-6 w-6 dark:text-dark-sixth text-light-sixth " />
+
       {content}
     </button>
   );
@@ -74,6 +52,35 @@ export const ThemeToggle = () => {
           <SunIcon className="h-4 w-4 text-light-quintuple" />
         )}
       </span>
+    </button>
+  );
+};
+
+export const ButtonNewCustomer = ({ content, onClick }) => {
+  return (
+    <button
+      type="submit"
+      className={`font-medium rounded-3xl text-sm px-4 py-2 dark:bg-dark-quaternary bg-light-quintuple dark:hover:bg-dark-eighth  hover:bg-light-ninth text-light-sixth dark:text-dark-sixth flex gap-4 `}
+      title="Add New Custumer "
+      onClick={onClick}
+    >
+      <UserPlusIcon className="h-6 w-6 dark:text-dark-sixth text-light-sixth " />
+      {content}
+    </button>
+  );
+};
+
+export const ButtonDelete = ({ content, onClick }) => {
+  return (
+    <button
+      type="button"
+      className={`font-medium w-fit rounded-3xl text-sm px-4 py-2 dark:bg-dark-tenth bg-light-tenth dark:hover:bg-dark-eleventh  hover:bg-light-eleventh text-light-sixth dark:text-dark-sixth flex gap-4 text-center justify-center `}
+      title="Add New Custumer "
+      onClick={onClick}
+    >
+      <UserMinusIcon className="h-6 w-6 dark:text-dark-sixth text-light-sixth  " />
+
+      {content}
     </button>
   );
 };

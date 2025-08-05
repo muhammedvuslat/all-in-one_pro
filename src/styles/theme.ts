@@ -10,6 +10,8 @@ module.exports = {
       seventh: "#C0C0C4", // Soft yazı tonu
       eighth: "#5e42ce", // quaternary hover
       ninth: "#f8507b", // quintuple hover
+      tenth: "#D62839", // Danger color
+      eleventh: "#e0525f",
     },
     light: {
       primary: "#F2F2F2",
@@ -21,6 +23,8 @@ module.exports = {
       seventh: "#C0C0C4", // Soft yazı tonu
       eighth: "#5e42ce", // quaternary hover
       ninth: "#f8507b", // quintuple hover
+      tenth: "#F5A524", // Danger color
+      eleventh: "#f9c76a",
     },
   },
   // Diğer tema özelleştirmeleri (örneğin, fontlar, boşluklar)

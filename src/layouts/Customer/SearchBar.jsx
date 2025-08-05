@@ -1,12 +1,7 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { ButtonPrimary } from "../../components/Button";
+import { ButtonSearchBar } from "../../components/Button";
 
 const SearchBar = () => {
-  const buttonFeatures = {
-    text: "Search",
-    rounded: "3xl",
-    styled: "absolute",
-  };
   const handleSearch = (e) => {
     console.log(e.target.value);
   };
@@ -31,7 +26,7 @@ const SearchBar = () => {
           required=""
           onChange={handleSearch}
         />
-        <ButtonPrimary props={buttonFeatures} />
+        <ButtonSearchBar content={"Search"} />
       </div>
     </form>
   );

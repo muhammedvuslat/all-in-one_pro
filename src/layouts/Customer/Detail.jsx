@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { ButtonSubmit } from "../../components/Button";
+import { ButtonSubmit, ButtonDelete } from "../../components/Button";
 import { faker } from "@faker-js/faker";
 
-const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
+const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
   const inputStyle =
     " text-sm border-x border-b rounded-b-xl  block w-full p-2.5 dark:bg-dark-secondary bg-light-secondary dark:border-dark-tertiary border-light-tertiary dark:placeholder-dark-seventh placeholder:text-dark-seventh dark:text-dark-sixth text-light-sixth";
 
@@ -19,25 +19,19 @@ const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
     notes: "",
   });
 
-  const handleFakeData = () => {
-    const randomCaccount = faker.finance.routingNumber();
-    console.log(randomCaccount);
-    return randomCaccount;
-  };
-
   useEffect(() => {
     setFormData({
-      id: product?.id || "",
-      companyName: product?.companyName || "",
-      address: product?.address || "",
-      iceCode: product?.iceCode || "",
-      phone: product?.phone || "",
-      eMail: product?.eMail || "",
-      referencePerson: product?.referencePerson || "",
-      currentAccount: product?.currentAccount || "",
-      notes: product?.notes || "",
+      id: customer?.id || "",
+      companyName: customer?.companyName || "",
+      address: customer?.address || "",
+      iceCode: customer?.iceCode || "",
+      phone: customer?.phone || "",
+      eMail: customer?.eMail || "",
+      referencePerson: customer?.referencePerson || "",
+      currentAccount: customer?.currentAccount || "",
+      notes: customer?.notes || "",
     });
-  }, [product]);
+  }, [customer]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -78,7 +72,7 @@ const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
         <div className="relative  rounded-lg shadow-sm dark:bg-dark-primary bg-light-primary border-2 dark:border-dark-eighth border-light-ninth">
           <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-dark-tertiary border-light-tertiary  ">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              {product ? "Edit Product" : "Create New Product"}
+              {customer ? "Edit Customer" : "Create New Customer"}
             </h3>
             <button
               type="button"
@@ -127,7 +121,7 @@ const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
                   htmlFor="companyName"
                   className="block mb-2 text-sm font-medium text-light-sixth dark:text-dark-sixth"
                 >
-                  Company Name
+                  Company Name*
                 </label>
                 <input
                   type="text"
@@ -136,8 +130,14 @@ const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
                   value={formData.companyName}
                   onChange={handleChange}
                   className={inputStyle}
-                  placeholder="Type product name"
+                  placeholder="Tesla"
                   required
+                  onInvalid={(e) =>
+                    e.target.setCustomValidity(
+                      "Please do not leave this field blank."
+                    )
+                  }
+                  onInput={(e) => e.target.setCustomValidity("")}
                 />
               </div>
               <div className="col-span-2  ">
@@ -145,7 +145,7 @@ const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
                   htmlFor="phone"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Phone Number
+                  Phone Number*
                 </label>
                 <input
                   type="tel"
@@ -154,8 +154,14 @@ const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
                   value={formData.phone}
                   onChange={handleChange}
                   className={inputStyle}
-                  placeholder="$2999"
+                  placeholder="555 665 99 99"
                   required
+                  onInvalid={(e) =>
+                    e.target.setCustomValidity(
+                      "Please do not leave this field blank."
+                    )
+                  }
+                  onInput={(e) => e.target.setCustomValidity("")}
                 />
               </div>
               <div className="col-span-2  ">
@@ -163,18 +169,23 @@ const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
                   htmlFor="iceCode"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  ICE Code
+                  ICE Code*
                 </label>
                 <input
                   type="text"
-                  //   pattern="[0-9]{15}"
-                  //   maxLength="15"
+                  pattern="[0-9]{9}"
                   name="iceCode"
                   id="iceCode"
                   value={formData.iceCode}
                   onChange={handleChange}
                   className={inputStyle}
-                  placeholder="$2999"
+                  placeholder="642887377"
+                  onInvalid={(e) =>
+                    e.target.setCustomValidity(
+                      "Please enter a 9-digit ICE code."
+                    )
+                  }
+                  onInput={(e) => e.target.setCustomValidity("")}
                   required
                 />
               </div>
@@ -183,17 +194,23 @@ const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
                   htmlFor="eMail"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Mail
+                  Mail*
                 </label>
                 <input
                   type="email"
-                  maxLength="15"
                   name="eMail"
                   id="eMail"
                   value={formData.eMail}
                   onChange={handleChange}
                   className={inputStyle}
+                  placeholder="email@mail.com"
                   required
+                  onInvalid={(e) =>
+                    e.target.setCustomValidity(
+                      "Please do not leave this field blank."
+                    )
+                  }
+                  onInput={(e) => e.target.setCustomValidity("")}
                 />
               </div>
               <div className="col-span-2  ">
@@ -201,7 +218,7 @@ const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
                   htmlFor="referencePerson"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Reference Person
+                  Reference Person*
                 </label>
                 <input
                   type="text"
@@ -211,8 +228,14 @@ const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
                   value={formData.referencePerson}
                   onChange={handleChange}
                   className={inputStyle}
-                  placeholder="$2999"
+                  placeholder="James Blues"
                   required
+                  onInvalid={(e) =>
+                    e.target.setCustomValidity(
+                      "Please do not leave this field blank."
+                    )
+                  }
+                  onInput={(e) => e.target.setCustomValidity("")}
                 />
               </div>
               <div className="col-span-2  ">
@@ -220,18 +243,23 @@ const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
                   htmlFor="address"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Address
+                  Address*
                 </label>
                 <input
                   type="text"
-                  maxLength="15"
                   name="address"
                   id="address"
                   value={formData.address}
                   onChange={handleChange}
                   className={inputStyle}
-                  placeholder="$2999"
+                  placeholder="Ankara/Türkiye"
                   required
+                  onInvalid={(e) =>
+                    e.target.setCustomValidity(
+                      "Please do not leave this field blank."
+                    )
+                  }
+                  onInput={(e) => e.target.setCustomValidity("")}
                 />
               </div>
 
@@ -249,29 +277,21 @@ const Detail = ({ isOpen, onClose, product, formSubmit, delCustomer }) => {
                   value={formData.notes}
                   onChange={handleChange}
                   className={inputStyle}
-                  placeholder="Write product description here"
+                  placeholder="Please write company notes if any"
                 />
               </div>
             </div>
-
-            <button
-              onClick={() => {
-                delCustomer(formData.id);
-                console.log(formData.id);
-              }}
-              className="btn bg-dark-quintuple me-6 w-10"
-            >
-              Sil
-            </button>
-            <button
-              onClick={() => {
-                handleFakeData();
-              }}
-              className="btn bg-dark-quintuple me-6 w-10"
-            >
-              test
-            </button>
-            <ButtonSubmit content={"Save"} />
+            <div className=" flex  gap-2  flex-col items-center ">
+              <ButtonSubmit content={"Save"} />
+              {customer && (
+                <ButtonDelete
+                  content={"Delete Customer"}
+                  onClick={() => {
+                    delCustomer(formData.id);
+                  }}
+                />
+              )}
+            </div>
           </form>
         </div>
       </div>

@@ -13,8 +13,8 @@ const SideBar = () => {
 
   const sideBarItem = [
     { name: "Home", icon: HomeIcon, href: "/" },
-    { name: "Müşteri Yönet", icon: UserIcon, href: "/customers" },
-    { name: "Cari Yönet", icon: WalletIcon, href: "/cari" },
+    { name: "Manage Customers", icon: UserIcon, href: "/customers" },
+    { name: "Account Management", icon: WalletIcon, href: "/cari" },
   ];
 
   // Dışarı tıklama kontrolü
@@ -52,14 +52,14 @@ const SideBar = () => {
       <aside
         ref={sidebarRef}
         id="default-sidebar"
-        className={`fixed top-0 left-0 z-40  w-56 h-screen transition-transform rounded-tr-3xl  ${
+        className={`fixed top-0 left-0 z-40  w-58 h-screen transition-transform rounded-tr-3xl  ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0`}
         aria-label="Sidebar"
       >
         <div className="h-full p-6  overflow-y-auto rounded-tr-3xl bg-light-secondary  dark:bg-dark-secondary">
           <ThemeToggle />
-          <ul className="space-y-4 font-medium">
+          <ul className="space-y-4 font-light">
             {sideBarItem.map((item, index) => {
               const isActive = location.pathname === item.href;
               return (
