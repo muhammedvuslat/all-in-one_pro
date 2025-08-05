@@ -10,9 +10,9 @@ export default function SimpleAreaChart({ customerChartData }) {
 
   console.log(customerChartData);
   return (
-    <div className="flex flex-row  ">
+    <div className="flex flex-row text-black dark:text-white ">
       <div className=" grid content-center">
-        <p className="text-3xl ps-1">{total}</p>
+        <p className="text-3xl ps-1 ">{total}</p>
       </div>
       <div className="text-center content-center ">
         <h1 className=" font-serif text-xl me-4 mt-2">

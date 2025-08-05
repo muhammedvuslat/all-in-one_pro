@@ -49,21 +49,21 @@ const DropdownSearch = ({ customerId, setChartOpen }) => {
       </button>
 
       {isOpen && (
-        <div className="absolute top-12 z-10 w-full bg-white border border-gray-200 rounded-md shadow-lg">
+        <div className="absolute top-12 z-10 w-full border-x border-b rounded-b-xl  p-2.5 dark:bg-dark-primary bg-light-secondary border-light-quintuple dark:border-dark-quaternary dark:placeholder-dark-seventh placeholder:text-dark-seventh dark:text-dark-sixth text-light-sixth">
           <input
             type="text"
             placeholder="Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-auto px-3 py-2 border-b border-gray-200 focus:outline-none"
+            className="w-auto px-3 py-2 border-x border-b rounded-b-xl  p-2.5 dark:bg-dark-secondary bg-light-secondary border-light-quintuple dark:border-dark-quaternary dark:placeholder-dark-seventh placeholder:text-dark-seventh dark:text-dark-sixth text-light-sixth"
           />
 
-          <ul className="max-h-60 overflow-y-auto">
+          <ul className="max-h-60 overflow-y-auto ">
             {filteredItems.length > 0 ? (
               filteredItems.map((item) => (
                 <li
                   key={item.id}
-                  className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                  className="px-4 py-2 cursor-pointer hover:border rounded-b-xl hover:dark:border-dark-quaternary hover:border-light-quintuple "
                   onClick={() => handleSelect(item)}
                 >
                   {item.companyName}

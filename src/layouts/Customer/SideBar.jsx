@@ -2,6 +2,7 @@ import { UserIcon, WalletIcon, HomeIcon } from "@heroicons/react/24/outline";
 import { useEffect, useRef, useState } from "react";
 import { Bars4Icon } from "@heroicons/react/24/outline";
 import { useLocation } from "react-router-dom"; // React Router için
+import { ThemeToggle } from "../../components/Button";
 
 const SideBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,6 +58,7 @@ const SideBar = () => {
         aria-label="Sidebar"
       >
         <div className="h-full p-6  overflow-y-auto rounded-tr-3xl bg-light-secondary  dark:bg-dark-secondary">
+          <ThemeToggle />
           <ul className="space-y-4 font-medium">
             {sideBarItem.map((item, index) => {
               const isActive = location.pathname === item.href;
