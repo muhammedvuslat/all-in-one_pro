@@ -8,21 +8,35 @@ import {
   updateCustomer,
 } from "../../services/customerServices";
 import { ButtonNewCustomer } from "../../components/Button";
+import { toast } from "react-toastify";
 
 const Table = () => {
   const [customers, setCustomers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
-  const [error, setError] = useState(null);
 
   //! READ Customer
   useEffect(() => {
     const fetchCustomers = async () => {
+      const toastId = toast.loading("Loading Customers");
       try {
         const data = await getCustomers();
         setCustomers(data);
+        toast.update(toastId, {
+          render: "Customers listed successfully",
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
+        });
+        console.log(toastId);
       } catch (error) {
-        setError("Failed to fetch customers");
+        toast.update(toastId, {
+          render: "Failed to fetch customers",
+          type: "error",
+          isLoading: false,
+          autoClose: 3000,
+        });
+        console.log(toastId);
       }
     };
     fetchCustomers();
@@ -35,7 +49,7 @@ const Table = () => {
       const data = await createCustomer(newCustomer);
       setCustomers([...customers, data]);
     } catch (error) {
-      setError("Failed to add customer");
+      toast.error("Failed to fetch customers");
     }
   };
 
@@ -46,7 +60,7 @@ const Table = () => {
       const data = await updateCustomer(updatedCustomer.id, updatedCustomer);
       setCustomers(customers.map((c) => (c.id === data.id ? data : c)));
     } catch (error) {
-      setError("Failed to update customer");
+      toast.error("Failed to fetch customers");
     }
   };
 
@@ -57,9 +71,8 @@ const Table = () => {
       await deleteCustomer(id);
       setCustomers(customers.filter((c) => c.id !== id));
       handleCloseModal();
-      setError(null);
     } catch (error) {
-      setError("Failed to delete customer");
+      toast.error("Failed to fetch customers");
     }
   };
 
@@ -103,8 +116,6 @@ const Table = () => {
         />
       </div>
       <div className="relative overflow-x-auto  m-2">
-        {error && <div className="text-red-500 mb-4">{error}</div>}
-
         <table className="w-full text-sm text-left rtl:text-right text-light-sixth dark:text-dark-sixth ">
           <thead className="text-xs  uppercase   border-b border-light-tertiary dark:border-dark-tertiary">
             <tr className=" rounded-3xl text-center">
