@@ -8,59 +8,63 @@ import {
   updateCustomer,
 } from "../../services/customerServices";
 import { ButtonNewCustomer } from "../../components/Button";
-import { toast } from "react-toastify";
+import { fetchWithToast } from "../../utils/fetchWithToast";
 
 const Table = () => {
   const [customers, setCustomers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
-
   //! READ Customer
+
   useEffect(() => {
-    const fetchCustomers = async () => {
-      const toastId = toast.loading("Loading Customers");
-      try {
-        const data = await getCustomers();
-        setCustomers(data);
-        toast.update(toastId, {
-          render: "Customers listed successfully",
-          type: "success",
-          isLoading: false,
-          autoClose: 3000,
-        });
-        console.log(toastId);
-      } catch (error) {
-        toast.update(toastId, {
-          render: "Failed to fetch customers",
-          type: "error",
-          isLoading: false,
-          autoClose: 3000,
-        });
-        console.log(toastId);
-      }
-    };
     fetchCustomers();
   }, []);
 
-  //! ADD Customer
+  const fetchCustomers = async () => {
+    try {
+      const data = await fetchWithToast(() => getCustomers(), {
+        loading: "Loading Customers",
+        success: "Customers listed successfully",
+        error: "Failed to fetch customers",
+      });
+      setCustomers(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
+  //! ADD Customer
   const handleAddCustomer = async (newCustomer) => {
     try {
-      const data = await createCustomer(newCustomer);
-      setCustomers([...customers, data]);
+      // fetchWithToast ile createCustomer çağrısı
+      const data = await fetchWithToast(() => createCustomer(newCustomer), {
+        loading: "Adding customer...",
+        success: "Customer added successfully",
+        error: "Failed to add customer",
+      });
+
+      // API başarılı olursa listeye ekle
+      setCustomers((prev) => [...prev, data]);
     } catch (error) {
-      toast.error("Failed to fetch customers");
+      // Hata durumunda fetchWithToast zaten toast gösterir
+      console.error(error);
     }
   };
 
   //! Update Customer
-
   const handleUpdateCustomer = async (updatedCustomer) => {
     try {
-      const data = await updateCustomer(updatedCustomer.id, updatedCustomer);
+      const data = await fetchWithToast(
+        () => updateCustomer(updatedCustomer.id, updatedCustomer),
+        {
+          loading: "Updating customer...",
+          success: "Customer update successfully",
+          error: "Customer update failed, notify System Administrator!",
+        }
+      );
       setCustomers(customers.map((c) => (c.id === data.id ? data : c)));
     } catch (error) {
-      toast.error("Failed to fetch customers");
+      console.log(error);
     }
   };
 
@@ -68,12 +72,14 @@ const Table = () => {
 
   const handleDeleteCustomer = async (id) => {
     try {
-      await deleteCustomer(id);
+      await fetchWithToast(() => deleteCustomer(id), {
+        loading: "Deleting client...",
+        success: "Client deletion successfully completed",
+        error: "Client deletion failed, notify System Administrator!",
+      });
       setCustomers(customers.filter((c) => c.id !== id));
       handleCloseModal();
-    } catch (error) {
-      toast.error("Failed to fetch customers");
-    }
+    } catch (error) {}
   };
 
   const customerColumn = [

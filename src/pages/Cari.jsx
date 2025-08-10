@@ -7,19 +7,12 @@ import {
   getClientAccount,
   updateClientAccount,
 } from "../services/customerServices";
+import { fetchWithToast } from "../utils/fetchWithToast";
 
 const Cari = () => {
   const [customerId, setCustomerId] = useState(null);
   const [customerChartData, setCustomerChartData] = useState(null);
   const [chartOpen, setChartOpen] = useState(false);
-  const fetchClientAccount = async (id) => {
-    try {
-      const data = await getClientAccount(id);
-      setCustomerChartData(data.data[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
     if (customerId !== null) {
@@ -27,9 +20,29 @@ const Cari = () => {
     }
   }, [customerId]);
 
+  const fetchClientAccount = async (id) => {
+    try {
+      const data = await fetchWithToast(() => getClientAccount(id), {
+        loading: "Listing account",
+        success: "Listing account was completed successfully",
+        error: "Listing account failed, notify System Administrator!",
+      });
+      setCustomerChartData(data.data[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleSubmit = async () => {
     try {
-      await updateClientAccount(customerId, customerChartData); // önce güncelle
+      await fetchWithToast(
+        () => updateClientAccount(customerId, customerChartData),
+        {
+          loading: "Account updating",
+          success: "Account update successfully completed",
+          error: "Account update failed, notify System Administrator!",
+        }
+      ); // önce güncelle
       await fetchClientAccount(customerId); // sonra veriyi yeniden çek
     } catch (error) {
       console.error("Hata:", error);
