@@ -1,9 +1,9 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { ButtonSearchBar } from "../../components/Button";
 
-const SearchBar = () => {
+const SearchBar = ({ onSearch }) => {
   const handleSearch = (e) => {
-    console.log(e.target.value);
+    onSearch(e.target.value);
   };
 
   return (

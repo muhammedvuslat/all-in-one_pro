@@ -1,37 +1,18 @@
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import Detail from "./Detail";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   createCustomer,
   deleteCustomer,
-  getCustomers,
   updateCustomer,
 } from "../../services/customerServices";
 import { ButtonNewCustomer } from "../../components/Button";
 import { fetchWithToast } from "../../utils/fetchWithToast";
 
-const Table = () => {
-  const [customers, setCustomers] = useState([]);
+const Table = ({ customers, setCustomers }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   //! READ Customer
-
-  useEffect(() => {
-    fetchCustomers();
-  }, []);
-
-  const fetchCustomers = async () => {
-    try {
-      const data = await fetchWithToast(() => getCustomers(), {
-        loading: "Loading Customers",
-        success: "Customers listed successfully",
-        error: "Failed to fetch customers",
-      });
-      setCustomers(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   //! ADD Customer
   const handleAddCustomer = async (newCustomer) => {
@@ -45,6 +26,7 @@ const Table = () => {
 
       // API başarılı olursa listeye ekle
       setCustomers((prev) => [...prev, data]);
+      console.log(data);
     } catch (error) {
       // Hata durumunda fetchWithToast zaten toast gösterir
       console.error(error);
@@ -121,6 +103,7 @@ const Table = () => {
           onClick={() => setIsModalOpen(true)}
         />
       </div>
+
       <div className="relative overflow-x-auto  m-2">
         <table className="w-full text-sm text-left rtl:text-right text-light-sixth dark:text-dark-sixth ">
           <thead className="text-xs  uppercase   border-b border-light-tertiary dark:border-dark-tertiary">

@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { getCustomers } from "../services/customerServices";
+import {
+  createClientAccount,
+  getCustomers,
+  updateCustomer,
+} from "../services/customerServices";
+import { faker } from "@faker-js/faker";
 
 const DropdownSearch = ({ customerId, setChartOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,8 +33,34 @@ const DropdownSearch = ({ customerId, setChartOpen }) => {
     setIsOpen(false);
   };
 
-  const handleGetData = () => {
+  const handleFakeAccount = async (id) => {
+    const account = { account: true };
+    await updateCustomer(id, account);
+    const fakerData = Object.fromEntries(
+      [
+        "receivables",
+        "payables",
+        "notesRA",
+        "notesPA",
+        "productA",
+        "productB",
+        "productC",
+        "productD",
+      ].map((key) => [key, faker.number.int({ min: 10, max: 1000 })])
+    );
+    await createClientAccount(id, fakerData);
+    console.log(account);
+
+    console.log(fakerData, id);
+  };
+
+  const handleGetData = async () => {
     if (selectedItem) {
+      if (!selectedItem.account) {
+        console.log(selectedItem.account);
+        await handleFakeAccount(selectedItem.id);
+      }
+      console.log(selectedItem);
       customerId(selectedItem.id);
       setChartOpen(true);
     }

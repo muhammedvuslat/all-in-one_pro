@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { ButtonSubmit, ButtonDelete } from "../../components/Button";
 import { faker } from "@faker-js/faker";
+import { deleteClientAccount } from "../../services/customerServices";
+import { toast } from "react-toastify";
 
 const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
   const inputStyle =
@@ -17,6 +19,7 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
     referencePerson: "",
     currentAccount: "",
     notes: "",
+    // account : ""
   });
 
   useEffect(() => {
@@ -30,6 +33,7 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
       referencePerson: customer?.referencePerson || "",
       currentAccount: customer?.currentAccount || "",
       notes: customer?.notes || "",
+      // account : customer?.account || ""
     });
   }, [customer]);
 
@@ -38,20 +42,55 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
 
     if (!formData.currentAccount) {
       const fakerData = faker.finance.routingNumber();
+      const updatedFormData = { ...formData, currentAccount: fakerData };
 
-      // Fonksiyonel güncelleme ile state'i ve formSubmit'i aynı anda işle
-      setFormData((prevFormData) => {
-        const updatedFormData = { ...prevFormData, currentAccount: fakerData };
-        formSubmit(updatedFormData); // Güncel veriyi doğrudan gönder
-        return updatedFormData; // State'i güncelle
-      });
+      setFormData(updatedFormData);
+      formSubmit(updatedFormData); // state güncellemeden ayrı çalışıyor
     } else {
-      formSubmit(formData); // currentAccount varsa mevcut formData'yı gönder
+      formSubmit(formData);
     }
   };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const confirmDelete = (onConfirm) => {
+    toast(
+      ({ closeToast }) => (
+        <div>
+          <p>Are you sure you want to delete this customer?</p>
+          <div className="flex gap-2 justify-center ">
+            <button
+              onClick={() => {
+                onConfirm();
+                closeToast();
+              }}
+              style={{
+                background: "red",
+                color: "#fff",
+                padding: "4px 8px",
+                borderRadius: "4px",
+              }}
+            >
+              Yes!
+            </button>
+            <button
+              onClick={closeToast}
+              style={{
+                background: "gray",
+                color: "#fff",
+                padding: "4px 8px",
+                borderRadius: "4px",
+              }}
+            >
+              No
+            </button>
+          </div>
+        </div>
+      ),
+      { autoClose: false }
+    );
   };
 
   if (!isOpen) return null;
@@ -282,9 +321,27 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
                 <ButtonDelete
                   content={"Delete Customer"}
                   onClick={() => {
-                    delCustomer(formData.id);
+                    confirmDelete(() => {
+                      delCustomer(formData.id);
+                      if (customer.account) {
+                        deleteClientAccount(formData.id);
+                        console.log("if bloğa girdi");
+                      }
+                    });
                   }}
                 />
+
+                // <ButtonDelete
+                //   content={"Delete Customer"}
+                //   onClick={() => {
+                //     delCustomer(formData.id);
+                //     if (customer.account) {
+                //       deleteClientAccount(formData.id);
+                //       console.log("if bloğa girdi");
+                //     }
+                //     console.log(customer.account);
+                //   }}
+                // />
               )}
             </div>
           </form>

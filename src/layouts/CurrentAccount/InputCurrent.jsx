@@ -52,6 +52,7 @@ const InputCurrent = ({
                   onChange={handleChange}
                   className={inputStyle}
                   placeholder="$ Enter amount"
+                  min={0}
                 />
               </div>
               <div className="mt-4 md:flex md:flex-row place-content-center gap-10">
@@ -69,6 +70,7 @@ const InputCurrent = ({
                   onChange={handleChange}
                   className={inputStyle}
                   placeholder="$ Enter amount"
+                  min={0}
                 />
               </div>
               <div className="mt-4 md:flex md:flex-row place-content-center gap-10">
@@ -86,6 +88,7 @@ const InputCurrent = ({
                   onChange={handleChange}
                   className={inputStyle}
                   placeholder="$ Enter amount"
+                  min={0}
                 />
               </div>
               <div className="mt-4 md:flex md:flex-row place-content-center gap-10">
@@ -103,6 +106,7 @@ const InputCurrent = ({
                   onChange={handleChange}
                   className={inputStyle}
                   placeholder="$ Enter amount"
+                  min={0}
                 />
               </div>
             </div>

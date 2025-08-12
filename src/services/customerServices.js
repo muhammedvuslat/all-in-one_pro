@@ -20,6 +20,14 @@ export const deleteCustomer = async (id) => {
   return response.data;
 };
 
+// export const deleteCustomer = async (id) => {
+//   const [customerRes] = await Promise.all([
+//     customersApi.delete(`/calisma/${id}`),
+//     deleteClientAccount(id),
+//   ]);
+//   return customerRes.data;
+// };
+
 export const getClientAccount = async (id) => {
   const response = await customersChartApi.get(`/${id}/test`);
   return response;
@@ -30,5 +38,15 @@ export const updateClientAccount = async (id, customerChartData) => {
     `/${id}/test/${id}`,
     customerChartData
   );
+  return response.data;
+};
+
+export const createClientAccount = async (id, accountData) => {
+  const response = await customersChartApi.post(`/${id}/test`, accountData);
+  return response.data;
+};
+
+export const deleteClientAccount = async (id) => {
+  const response = await customersChartApi.delete(`/${id}/test/${id}`);
   return response.data;
 };
