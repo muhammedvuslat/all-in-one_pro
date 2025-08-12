@@ -11,7 +11,7 @@ const features = [
     icon: <ChartBarSquareIcon className="w-8 h-8 text-green-500" />,
     title: "Account Tracking",
     desc: "Monitor receivables and payables in real-time.",
-    ref: "/cari",
+    ref: "/account",
   },
 ];
 

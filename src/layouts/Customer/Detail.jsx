@@ -325,23 +325,10 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
                       delCustomer(formData.id);
                       if (customer.account) {
                         deleteClientAccount(formData.id);
-                        console.log("if bloğa girdi");
                       }
                     });
                   }}
                 />
-
-                // <ButtonDelete
-                //   content={"Delete Customer"}
-                //   onClick={() => {
-                //     delCustomer(formData.id);
-                //     if (customer.account) {
-                //       deleteClientAccount(formData.id);
-                //       console.log("if bloğa girdi");
-                //     }
-                //     console.log(customer.account);
-                //   }}
-                // />
               )}
             </div>
           </form>

@@ -26,7 +26,6 @@ const Table = ({ customers, setCustomers }) => {
 
       // API başarılı olursa listeye ekle
       setCustomers((prev) => [...prev, data]);
-      console.log(data);
     } catch (error) {
       // Hata durumunda fetchWithToast zaten toast gösterir
       console.error(error);
@@ -45,9 +44,7 @@ const Table = ({ customers, setCustomers }) => {
         }
       );
       setCustomers(customers.map((c) => (c.id === data.id ? data : c)));
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   //! DELETE Customer

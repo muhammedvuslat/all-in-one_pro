@@ -13,5 +13,3 @@ export const customersChartApi = axios.create({
     "Content-Type": "application/json",
   },
 });
-
-//! Tam çeviri Client Account

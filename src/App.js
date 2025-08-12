@@ -3,7 +3,7 @@ import "./App.css";
 import SideBar from "./layouts/Customer/SideBar";
 import Home from "./pages/Home";
 import Customer from "./pages/Customer";
-import Cari from "./pages/Cari";
+import Account from "./pages/Account";
 import { ToastContainer } from "react-toastify";
 
 import { useTheme } from "./features/ThemeContext";
@@ -19,7 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="customers" element={<Customer />} />
-            <Route path="cari" element={<Cari />} />
+            <Route path="account" element={<Account />} />
           </Routes>
         </div>
         <ToastContainer

@@ -14,7 +14,7 @@ const SideBar = () => {
   const sideBarItem = [
     { name: "Home", icon: HomeIcon, href: "/" },
     { name: "Manage Customers", icon: UserIcon, href: "/customers" },
-    { name: "Account Management", icon: WalletIcon, href: "/cari" },
+    { name: "Account Management", icon: WalletIcon, href: "/account" },
   ];
 
   // Dışarı tıklama kontrolü

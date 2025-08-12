@@ -17,9 +17,7 @@ const DropdownSearch = ({ customerId, setChartOpen }) => {
       try {
         const data = await getCustomers();
         setItems(data);
-      } catch (error) {
-        console.log(error, "fetch erroru bu");
-      }
+      } catch (error) {}
     };
     fetchCustomer();
   }, []);
@@ -49,18 +47,13 @@ const DropdownSearch = ({ customerId, setChartOpen }) => {
       ].map((key) => [key, faker.number.int({ min: 10, max: 1000 })])
     );
     await createClientAccount(id, fakerData);
-    console.log(account);
-
-    console.log(fakerData, id);
   };
 
   const handleGetData = async () => {
     if (selectedItem) {
       if (!selectedItem.account) {
-        console.log(selectedItem.account);
         await handleFakeAccount(selectedItem.id);
       }
-      console.log(selectedItem);
       customerId(selectedItem.id);
       setChartOpen(true);
     }

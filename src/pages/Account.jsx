@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PieChartWithPaddingAngle from "../components/charts/AngelPieChart";
 import SimpleAreaChart from "../components/charts/SimpleAreaChart";
 import InputCurrent from "../layouts/CurrentAccount/InputCurrent";
@@ -9,7 +9,7 @@ import {
 } from "../services/customerServices";
 import { fetchWithToast } from "../utils/fetchWithToast";
 
-const Cari = () => {
+const Account = () => {
   const [customerId, setCustomerId] = useState(null);
   const [customerChartData, setCustomerChartData] = useState(null);
   const [chartOpen, setChartOpen] = useState(false);
@@ -28,9 +28,7 @@ const Cari = () => {
         error: "Listing account failed, notify System Administrator!",
       });
       setCustomerChartData(data.data[0]);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const handleSubmit = async () => {
@@ -84,4 +82,4 @@ const Cari = () => {
   );
 };
 
-export default Cari;
+export default Account;
