@@ -72,7 +72,7 @@ const DropdownSearch = ({ customerId, setChartOpen }) => {
         onClick={() => setIsOpen(!isOpen)}
         className="w-40 md:w-96 h-10 text-left px-4 py-2 border-x border-b rounded-b-xl  p-2.5 dark:bg-dark-secondary bg-light-secondary border-light-quintuple dark:border-dark-quaternary dark:placeholder-dark-seventh placeholder:text-dark-seventh dark:text-dark-sixth text-light-sixth truncate"
       >
-        {selectedItem ? selectedItem.companyName : "Select an item"}
+        {selectedItem ? selectedItem.companyName : "Select Customer"}
       </button>
 
       {isOpen && (
