@@ -1,12 +1,12 @@
+// Component used to display and search the customer list.
+import { useEffect, useState } from "react";
 import "../styles/Customer.css";
-// import { useState } from "react";
-
 import SearchBar from "../layouts/Customer/SearchBar";
 import Table from "../layouts/Customer/Table";
 import { fetchWithToast } from "../utils/fetchWithToast";
 import { getCustomers } from "../services/customerServices";
-import { useEffect, useState } from "react";
 
+// Customer component
 const Customer = () => {
   const [customers, setCustomers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -19,20 +19,21 @@ const Customer = () => {
     }).then((data) => setCustomers(data));
   }, []);
 
+  // Filters customers based on search term
   const filteredCustomers = customers.filter(
-    (c) =>
-      c.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      c.iceCode.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      String(c.id).includes(searchTerm)
+    (customer) =>
+      customer.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      customer.iceCode.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      String(customer.id).includes(searchTerm)
   );
 
   return (
-    <>
-      <div className="customer-div">
-        <SearchBar onSearch={setSearchTerm} />
-        <Table customers={filteredCustomers} setCustomers={setCustomers} />
-      </div>
-    </>
+    <div className="customer-div">
+      {/*Search bar component */}
+      <SearchBar onSearch={setSearchTerm} />
+      {/* Displays filtered customer data in a table */}
+      <Table customers={filteredCustomers} setCustomers={setCustomers} />
+    </div>
   );
 };
 

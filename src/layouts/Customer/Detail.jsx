@@ -1,13 +1,15 @@
+//  Modal component used to edit and delete customer details.
 import { useEffect, useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { ButtonSubmit, ButtonDelete } from "../../components/Button";
 import { faker } from "@faker-js/faker";
-import { deleteClientAccount } from "../../services/customerServices";
+import { deleteCustomerAccount } from "../../services/customerServices";
 import { toast } from "react-toastify";
 
+//  Customer detail component
 const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
   const inputStyle =
-    " text-sm border-x border-b rounded-b-xl  block w-full p-2.5 dark:bg-dark-secondary bg-light-secondary dark:border-dark-tertiary border-light-tertiary dark:placeholder-dark-seventh placeholder:text-dark-seventh dark:text-dark-sixth text-light-sixth";
+    "text-sm border-x border-b rounded-b-xl block w-full p-2.5 dark:bg-dark-secondary bg-light-secondary dark:border-dark-tertiary border-light-tertiary dark:placeholder-dark-seventh placeholder:text-dark-seventh dark:text-dark-sixth text-light-sixth";
 
   const [formData, setFormData] = useState({
     id: "",
@@ -19,9 +21,9 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
     referencePerson: "",
     currentAccount: "",
     notes: "",
-    // account : ""
   });
 
+  //  Updates the form when customer data changes
   useEffect(() => {
     setFormData({
       id: customer?.id || "",
@@ -33,34 +35,33 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
       referencePerson: customer?.referencePerson || "",
       currentAccount: customer?.currentAccount || "",
       notes: customer?.notes || "",
-      // account : customer?.account || ""
     });
   }, [customer]);
 
+  // Updates form data
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  // Handles form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!formData.currentAccount) {
       const fakerData = faker.finance.routingNumber();
       const updatedFormData = { ...formData, currentAccount: fakerData };
-
       setFormData(updatedFormData);
-      formSubmit(updatedFormData); // state güncellemeden ayrı çalışıyor
+      formSubmit(updatedFormData);
     } else {
       formSubmit(formData);
     }
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
+  // Confirms and performs customer deletion
   const confirmDelete = (onConfirm) => {
     toast(
       ({ closeToast }) => (
         <div>
           <p>Are you sure you want to delete this customer?</p>
-          <div className="flex gap-2 justify-center ">
+          <div className="flex gap-2 justify-center">
             <button
               onClick={() => {
                 onConfirm();
@@ -120,7 +121,7 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
           </div>
           <form className="p-4 md:p-5" onSubmit={handleSubmit}>
             <div className="flex place-content-between text-start  w-full ">
-              <div className="border-b  border-light-tertiary dark:border-dark-tertiary ">
+              <div className="border-b border-light-tertiary dark:border-dark-tertiary ">
                 <label
                   htmlFor="name"
                   className=" mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -164,7 +165,7 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
                   value={formData.companyName}
                   onChange={handleChange}
                   className={inputStyle}
-                  placeholder="Tesla"
+                  placeholder="Enter company name"
                   required
                   onInvalid={(e) =>
                     e.target.setCustomValidity(
@@ -174,7 +175,7 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
                   onInput={(e) => e.target.setCustomValidity("")}
                 />
               </div>
-              <div className="col-span-2  ">
+              <div className="col-span-2">
                 <label
                   htmlFor="phone"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -198,7 +199,7 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
                   onInput={(e) => e.target.setCustomValidity("")}
                 />
               </div>
-              <div className="col-span-2  ">
+              <div className="col-span-2">
                 <label
                   htmlFor="iceCode"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -223,12 +224,12 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
                   required
                 />
               </div>
-              <div className="col-span-2  ">
+              <div className="col-span-2">
                 <label
                   htmlFor="eMail"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Mail*
+                  Email*
                 </label>
                 <input
                   type="email"
@@ -237,7 +238,7 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
                   value={formData.eMail}
                   onChange={handleChange}
                   className={inputStyle}
-                  placeholder="email@mail.com"
+                  placeholder="company@example.com"
                   required
                   onInvalid={(e) =>
                     e.target.setCustomValidity(
@@ -247,7 +248,7 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
                   onInput={(e) => e.target.setCustomValidity("")}
                 />
               </div>
-              <div className="col-span-2  ">
+              <div className="col-span-2">
                 <label
                   htmlFor="referencePerson"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -272,7 +273,7 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
                   onInput={(e) => e.target.setCustomValidity("")}
                 />
               </div>
-              <div className="col-span-2  ">
+              <div className="col-span-2">
                 <label
                   htmlFor="address"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -296,7 +297,6 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
                   onInput={(e) => e.target.setCustomValidity("")}
                 />
               </div>
-
               <div className="col-span-2">
                 <label
                   htmlFor="notes"
@@ -315,7 +315,7 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
                 />
               </div>
             </div>
-            <div className=" flex  gap-2  flex-col items-center ">
+            <div className="flex gap-2 flex-col items-center">
               <ButtonSubmit content={"Save"} />
               {customer && (
                 <ButtonDelete
@@ -324,7 +324,7 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
                     confirmDelete(() => {
                       delCustomer(formData.id);
                       if (customer.account) {
-                        deleteClientAccount(formData.id);
+                        deleteCustomerAccount(formData.id);
                       }
                     });
                   }}

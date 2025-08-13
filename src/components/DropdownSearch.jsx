@@ -1,36 +1,44 @@
+// Dropdown search component for selecting customers.
 import { useEffect, useState } from "react";
 import {
-  createClientAccount,
+  createCustomerAccount,
   getCustomers,
   updateCustomer,
 } from "../services/customerServices";
 import { faker } from "@faker-js/faker";
 
+//  Dropdown search component for customer selection
 const DropdownSearch = ({ customerId, setChartOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [items, setItems] = useState([]);
 
+  //  Fetches customer data
   useEffect(() => {
     const fetchCustomer = async () => {
       try {
         const data = await getCustomers();
         setItems(data);
-      } catch (error) {}
+      } catch (error) {
+        console.error("Error: Failed to fetch customer data", error);
+      }
     };
     fetchCustomer();
   }, []);
 
+  // Filters customers based on search term
   const filteredItems = items.filter((item) =>
     item.companyName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  //  Sets the selected customer and closes the menu
   const handleSelect = (item) => {
     setSelectedItem(item);
     setIsOpen(false);
   };
 
+  //  Creates and updates fake account data
   const handleFakeAccount = async (id) => {
     const account = { account: true };
     await updateCustomer(id, account);
@@ -46,9 +54,10 @@ const DropdownSearch = ({ customerId, setChartOpen }) => {
         "productD",
       ].map((key) => [key, faker.number.int({ min: 10, max: 1000 })])
     );
-    await createClientAccount(id, fakerData);
+    await createCustomerAccount(id, fakerData);
   };
 
+  // Fetches data for the selected customer and opens the chart
   const handleGetData = async () => {
     if (selectedItem) {
       if (!selectedItem.account) {
@@ -60,30 +69,28 @@ const DropdownSearch = ({ customerId, setChartOpen }) => {
   };
 
   return (
-    <div className="flex flex-row  gap-2 w-auto relative items-center my-6 ">
+    <div className="flex flex-row gap-2 w-auto relative items-center my-6">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-40 md:w-96 h-10 text-left px-4 py-2 border-x border-b rounded-b-xl  p-2.5 dark:bg-dark-secondary bg-light-secondary border-light-quintuple dark:border-dark-quaternary dark:placeholder-dark-seventh placeholder:text-dark-seventh dark:text-dark-sixth text-light-sixth truncate"
+        className="w-40 md:w-96 h-10 text-left px-4 py-2 border-x border-b rounded-b-xl p-2.5 dark:bg-dark-secondary bg-light-secondary border-light-quintuple dark:border-dark-quaternary dark:placeholder-dark-seventh placeholder:text-dark-seventh dark:text-dark-sixth text-light-sixth truncate"
       >
         {selectedItem ? selectedItem.companyName : "Select Customer"}
       </button>
-
       {isOpen && (
-        <div className="absolute top-12 z-10 w-full border-x border-b rounded-b-xl  p-2.5 dark:bg-dark-primary bg-light-secondary border-light-quintuple dark:border-dark-quaternary dark:placeholder-dark-seventh placeholder:text-dark-seventh dark:text-dark-sixth text-light-sixth">
+        <div className="absolute top-12 z-10 w-full border-x border-b rounded-b-xl p-2.5 dark:bg-dark-primary bg-light-secondary border-light-quintuple dark:border-dark-quaternary dark:placeholder-dark-seventh placeholder:text-dark-seventh dark:text-dark-sixth text-light-sixth">
           <input
             type="text"
             placeholder="Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-auto px-3 py-2 border-x border-b rounded-b-xl  p-2.5 dark:bg-dark-secondary bg-light-secondary border-light-quintuple dark:border-dark-quaternary dark:placeholder-dark-seventh placeholder:text-dark-seventh dark:text-dark-sixth text-light-sixth"
+            className="w-auto px-3 py-2 border-x border-b rounded-b-xl p-2.5 dark:bg-dark-secondary bg-light-secondary border-light-quintuple dark:border-dark-quaternary dark:placeholder-dark-seventh placeholder:text-dark-seventh dark:text-dark-sixth text-light-sixth"
           />
-
-          <ul className="max-h-60 overflow-y-auto ">
+          <ul className="max-h-60 overflow-y-auto">
             {filteredItems.length > 0 ? (
               filteredItems.map((item) => (
                 <li
                   key={item.id}
-                  className="px-4 py-2 cursor-pointer hover:border rounded-b-xl hover:dark:border-dark-quaternary hover:border-light-quintuple "
+                  className="px-4 py-2 cursor-pointer hover:border rounded-b-xl hover:dark:border-dark-quaternary hover:border-light-quintuple"
                   onClick={() => handleSelect(item)}
                 >
                   {item.companyName}
@@ -95,11 +102,10 @@ const DropdownSearch = ({ customerId, setChartOpen }) => {
           </ul>
         </div>
       )}
-
       <button
         onClick={handleGetData}
         disabled={!selectedItem}
-        className={`px-4 py-2 rounded-md  h-10 w-auto text-white transition-colors ${
+        className={`px-4 py-2 rounded-md h-10 w-auto text-white transition-colors ${
           selectedItem
             ? "dark:bg-dark-quaternary dark:hover:bg-dark-eighth bg-light-quintuple hover:bg-light-ninth"
             : "bg-gray-400 cursor-not-allowed"

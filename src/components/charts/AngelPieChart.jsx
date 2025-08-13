@@ -1,18 +1,19 @@
-import React from "react";
+// Component that displays customer financial data as a pie chart.
 import Stack from "@mui/material/Stack";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useTheme } from "../../features/ThemeContext";
 
-// PieChart bileşeni: Müşteri verilerini temaya göre gösteren pasta grafik.
+// Pie chart component
+
 export default function PieChartWithPaddingAngle({ customerChartData }) {
   const { theme } = useTheme();
-  const isDark = theme === "dark";
-  const legendTextColor = isDark ? "#FFFFFF" : "#000000"; // Daha açık okunabilirlik için tam beyaz (#FFFF → #FFFFFF)
+  const isDarkMode = theme === "dark";
+  const legendTextColor = isDarkMode ? "#FFFFFF" : "#000000";
 
-  // Destructuring ile veri modelini okunabilir hale getiriyoruz
+  // Structures financial data
+
   const { receivables, payables, notesRA, notesPA } = customerChartData;
 
-  // Grafik verilerini sabit bir dizi olarak tanımlıyoruz
   const chartData = [
     { label: "Receivables", value: receivables },
     { label: "Payables", value: payables },
@@ -35,14 +36,14 @@ export default function PieChartWithPaddingAngle({ customerChartData }) {
             cy: "75%",
           },
         ]}
-        colors={["#007a33", "#F94F58", "#4254FB", "#FAB423"]} // Kurumsal renk paleti tanımlı
+        colors={["#007a33", "#F94F58", "#4254FB", "#FAB423"]}
         width={200}
         height={150}
         slotProps={{
           legend: {
             sx: {
               fontSize: 14,
-              color: legendTextColor, // Tema bağımlı yazı rengi
+              color: legendTextColor,
             },
           },
         }}
