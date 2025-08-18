@@ -1,16 +1,20 @@
+// Search bar component for customer search.
+
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { ButtonSearchBar } from "../../components/Button";
 
+//  Search bar component
 const SearchBar = ({ onSearch }) => {
+  //  Updates the search term
   const handleSearch = (e) => {
     onSearch(e.target.value);
   };
 
   return (
-    <form className="w-auto mx-2 mb-0 text-light-sixth  dark:text-dark-sixth">
+    <form className="w-auto mx-2 mb-0 text-light-sixth dark:text-dark-sixth">
       <label
         htmlFor="default-search"
-        className="mb-2 text-sm font-medium sr-only  "
+        className="mb-2 text-sm font-medium sr-only"
       >
         Search
       </label>
@@ -21,9 +25,9 @@ const SearchBar = ({ onSearch }) => {
         <input
           type="search"
           id="default-search"
-          className="block w-full p-4 ps-10 text-sm border   rounded-t-3xl border-light-tertiary dark:border-dark-tertiary text-light-sixth dark:text-dark-sixth bg-light-secondary  dark:bg-dark-secondary placeholder-light-seventh dark:placeholder-dark-seventh  "
+          className="block w-full p-4 ps-10 text-sm border rounded-t-3xl border-light-tertiary dark:border-dark-tertiary text-light-sixth dark:text-dark-sixth bg-light-secondary dark:bg-dark-secondary placeholder-light-seventh dark:placeholder-dark-seventh"
           placeholder="Search ID, Company, ICE"
-          required=""
+          required
           onChange={handleSearch}
         />
         <ButtonSearchBar content={"Search"} />

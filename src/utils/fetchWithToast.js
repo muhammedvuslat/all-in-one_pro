@@ -1,21 +1,23 @@
-// src/utils/fetchWithToast.js
+//  Utility function to handle API calls with toast notifications.
+
 import { toast } from "react-toastify";
 
+//Executes an API call with toast notifications
 export const fetchWithToast = async (promiseFn, messages = {}) => {
   const {
-    loading = "Loading...", // Bekleme sırasında gösterilecek mesaj
-    success = "Operation successful", // Başarılı olunca gösterilecek mesaj
-    error = "Something went wrong", // Hata olunca gösterilecek mesaj
+    loading = "Loading...",
+    success = "Operation successful",
+    error = "Something went wrong",
   } = messages;
 
-  // 1. Loading toast'ını başlat
+  //  Initiates the loading notification
   const toastId = toast.loading(loading);
 
   try {
-    // 2. Asıl API çağrısını çalıştır
+    //  Performs the API call
     const result = await promiseFn();
 
-    // 3. Başarılı olursa toast'ı güncelle
+    //  Updates the notification on success
     toast.update(toastId, {
       render: success,
       type: "success",
@@ -24,9 +26,9 @@ export const fetchWithToast = async (promiseFn, messages = {}) => {
       hideProgressBar: true,
     });
 
-    return result; // Veriyi geri döndür
+    return result;
   } catch (err) {
-    // 4. Hata olursa toast'ı güncelle
+    //  Updates the notification on error
     toast.update(toastId, {
       render: error,
       type: "error",
@@ -35,6 +37,6 @@ export const fetchWithToast = async (promiseFn, messages = {}) => {
       hideProgressBar: true,
     });
 
-    throw err; // Hata üstteki koda fırlatılır (istersen yakalayabilirsin)
+    throw err;
   }
 };
