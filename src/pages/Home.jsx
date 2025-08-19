@@ -1,5 +1,7 @@
+//  Component that displays the application's homepage.
 import { ChartBarSquareIcon, UsersIcon } from "@heroicons/react/24/solid";
 
+//  Data for feature cards
 const features = [
   {
     icon: <UsersIcon className="w-8 h-8 text-blue-500" />,
@@ -15,12 +17,13 @@ const features = [
   },
 ];
 
+//  Homepage component
 const Home = () => {
   return (
     <div className="h-screen dark:bg-dark-primary bg-light-primary flex flex-col">
       {/* Hero Section */}
       <section className="max-w-6xl mx-auto px-6 py-4 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 dark:text-white text-black ">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 dark:text-white text-black">
           Customer Management System
         </h1>
         <p className="text-lg dark:text-gray-300 text-gray-600 mb-8 max-w-2xl mx-auto">
@@ -30,12 +33,12 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="dark:bg-dark-primary bg-light-primary ">
-        <div className="flex  p-6  gap-8 justify-center flex-col md:flex-row ">
+      <section className="dark:bg-dark-primary bg-light-primary">
+        <div className="flex p-6 gap-8 justify-center flex-col md:flex-row">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="p-6 border w-22 md:w-72 rounded-xl shadow-sm hover:shadow-md transition bg-gray-50 place-items-center cursor-pointer "
+              className="p-6 border w-22 md:w-72 rounded-xl shadow-sm hover:shadow-md transition bg-gray-50 place-items-center cursor-pointer"
               onClick={() => (window.location.href = `${feature.ref}`)}
             >
               {feature.icon}
@@ -45,8 +48,7 @@ const Home = () => {
           ))}
         </div>
       </section>
-
-      {/* Call to Action */}
+      {/*  GitHub link section */}
       <section className="p-8 text-center dark:bg-dark-primary bg-light-primary">
         <h2 className="text-3xl font-bold mb-4 dark:text-white text-black ">
           Are you ready to grow while managing your business with ease?
@@ -77,8 +79,8 @@ const Home = () => {
         </button>
       </section>
 
-      {/* Footer Info Section */}
-      <footer className="dark:bg-dark-eleventh bg-light-eleventh py-2 mt-auto ">
+      {/* Footer section */}
+      <footer className="dark:bg-dark-eleventh bg-light-eleventh py-2 mt-auto">
         <div className="max-w-6xl mx-auto px-6">
           <h3 className="text-lg font-bold mb-4">Important Notes</h3>
           <ul className="list-disc list-inside text-gray-700 space-y-1 text-sm">

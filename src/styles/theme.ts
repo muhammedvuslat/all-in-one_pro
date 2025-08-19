@@ -1,4 +1,6 @@
+//  File defining the theme configuration for the application.
 module.exports = {
+  // Color themes
   colors: {
     dark: {
       primary: "#131029",
@@ -6,8 +8,8 @@ module.exports = {
       tertiary: "#53515C",
       quaternary: "#6F4EF2",
       quintuple: "#F73164",
-      sixth: "#FFFFFF", // Yazı tonu
-      seventh: "#C0C0C4", // Soft yazı tonu
+      sixth: "#FFFFFF", //  Text color
+      seventh: "#C0C0C4", // Soft text color
       eighth: "#5e42ce", // quaternary hover
       ninth: "#f8507b", // quintuple hover
       tenth: "#D62839", // Danger color
@@ -19,15 +21,16 @@ module.exports = {
       tertiary: "#B0B0B0",
       quaternary: "#6F4EF2",
       quintuple: "#F73164",
-      sixth: "#000205", // Yazı tonu
-      seventh: "#C0C0C4", // Soft yazı tonu
+      sixth: "#000205", //  Text color
+      seventh: "#C0C0C4", // Soft text color
       eighth: "#5e42ce", // quaternary hover
       ninth: "#f8507b", // quintuple hover
       tenth: "#F5A524", // Danger color
       eleventh: "#f9c76a",
     },
   },
-  // Diğer tema özelleştirmeleri (örneğin, fontlar, boşluklar)
+
+  //  Font family settings
   fontFamily: {
     sans: [
       "-apple-system",
