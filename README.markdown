@@ -26,7 +26,7 @@ Welcome to **Customer Management App**, a modern React-based web application des
 
 ## Demo
 
-Check out the live demo of the application [here](#) (replace with your deployed app link).
+Check out the live demo of the application [here](https://allinone-pro.netlify.app/) (replace with your deployed app link).
 
 ## Screenshot
 
