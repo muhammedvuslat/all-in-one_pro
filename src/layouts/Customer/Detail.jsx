@@ -321,9 +321,18 @@ const Detail = ({ isOpen, onClose, customer, formSubmit, delCustomer }) => {
                 <ButtonDelete
                   content={"Delete Customer"}
                   onClick={() => {
+                    // confirmDelete(() => {
+                    //   delCustomer(formData.id);
+                    //   if (customer.account) {
+                    //     deleteCustomerAccount(formData.id);
+                    //   }
+                    // });
                     confirmDelete(() => {
                       delCustomer(formData.id);
-                      if (customer.account) {
+                      if (
+                        customer?.account &&
+                        Object.keys(customer.account).length > 0
+                      ) {
                         deleteCustomerAccount(formData.id);
                       }
                     });

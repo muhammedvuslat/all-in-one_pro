@@ -97,7 +97,7 @@ const Home = () => {
             </li>
             <li>
               Customer and data entries are entirely fictional, generated with{" "}
-              <strong>faker.js</strong>.
+              <strong>faker.js</strong> and <strong>mockapi.io</strong> .
             </li>
             <li>
               No real individuals or organizations are involved in this dataset.
