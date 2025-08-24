@@ -31,7 +31,8 @@ Check out the live demo of the application [here](https://allinone-pro.netlify.a
 ## Screenshot
 
 ![Customer Management App Screenshot](./public/a_app-gif-2.gif)
-![Customer Management App Screenshot](./public/a_app-gif-1.gif)
+
+![Customer Management App Screenshot2](./public/a_app-gif.gif)
 
 ## Technologies Used
 
